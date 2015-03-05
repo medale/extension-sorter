@@ -10,7 +10,7 @@ import java.io.File
  */
 object Sorter {
 
-  case class Config(sortDir: File = null, destDir: File = null, extensions: Seq[Seq[String]] = List(List("jpg", "JPG"), List("gif", "GIF")))
+  case class Config(sortDir: File = null, destDir: File = null, extensions: Set[Set[String]] = Set())
 
   def main(args: Array[String]): Unit = {
     val p = parser()
@@ -36,17 +36,13 @@ object Sorter {
       } text ("destDir is string with relative or absolute location of dir where sorted output will be written.")
 
       opt[String]("ext") unbounded () optional () action { (extArg, config) =>
-        config.copy(extensions = config.extensions :+ splitExtensions(extArg))
-      } validate { x =>
-        val dir = new File(x)
-        if (dir.canWrite()) success
-        else failure("Option --ext must be a comma-separated list of equivalent extensions (e.g. git,GIF) ")
+        config.copy(extensions = config.extensions + splitExtensions(extArg))
       } text ("-ext can occur multiple times and each instance is a comma-separated list of equivalent extensions.")
 
     }
   }
 
-  def splitExtensions(extArg: String): List[String] = {
-    extArg.split(",").toList
+  def splitExtensions(extArg: String): Set[String] = {
+    extArg.split(",").toSet
   }
 }
