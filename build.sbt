@@ -10,6 +10,8 @@ resolvers += "Typesafe Repo" at "http://repo.typesafe.com/typesafe/releases/"
 
 libraryDependencies += "com.github.scopt" %% "scopt" % "3.3.0" withSources() withJavadoc()
 
+libraryDependencies += "commons-io" % "commons-io" % "2.4" withSources() withJavadoc()
+
 libraryDependencies += "org.scalatest" %% "scalatest" % "2.2.2" % "test" 
 
 libraryDependencies += "junit" % "junit" % "4.11" % "test"
