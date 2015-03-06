@@ -62,6 +62,7 @@ Use extension-sorter!
 ### Extension Sorter command line arguments
 
 Extension sorter requires three arguments:
+
 1. --sortDir - this is the source dir that contains the files we want to sort.
 1. --destDir - the destination directory where the artifacts will be stored sorted.
 1. --ext - (one or more sets of these). Comma separated list(s) of extension groups to
