@@ -10,6 +10,7 @@ object FileUtils {
    * Return a file location string that is relative to the start directory
    * from an absolute file location. So /home/test/.bashrc becomes ./.bashrc
    * if /home/test/ is the starting dir.
+   *
    * @param absoluteFileLocation
    * @param startDirectory - the directory to "subtract" from absolute file location
    * @return file location relative to start directory.

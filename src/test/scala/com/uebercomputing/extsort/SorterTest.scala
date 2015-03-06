@@ -38,7 +38,7 @@ class SorterTest extends BaseFixtureTest {
     val config = configOpt.get
     assert(config.sortDir.getCanonicalPath === TestSortDir)
     assert(config.destDir === destDir)
-    assert(config.extensions === Set())
+    assert(config.extensionGroups === Set())
   }
 
   test("args parser - valid extension1") { destDir =>
@@ -49,7 +49,7 @@ class SorterTest extends BaseFixtureTest {
     val configOpt = p.parse(args, Sorter.Config())
     assert(configOpt.isDefined)
     val config = configOpt.get
-    val exts = config.extensions
+    val exts = config.extensionGroups
     assert(exts.size === 1)
     assert(exts.contains(List("foo", "FOO")))
   }
@@ -72,7 +72,7 @@ class SorterTest extends BaseFixtureTest {
     val configOpt = p.parse(args, Sorter.Config())
     assert(configOpt.isDefined)
     val config = configOpt.get
-    val exts = config.extensions
+    val exts = config.extensionGroups
     assert(exts.size === 2)
     assert(exts.contains(List("foo", "FOO")))
     assert(exts.contains(List("bar", "BAZ")))
